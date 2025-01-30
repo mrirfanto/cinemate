@@ -1,36 +1,271 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CineMate 🎬
 
-## Getting Started
+CineMate helps couples find their perfect movie match. Swipe through movies together and get matched when you both like the same film - no more lengthy debates about what to watch!
 
-First, run the development server:
+## Live Demo
+
+[Coming Soon]
+
+## Features
+
+- Tinder-like swipe interface for movies
+- Partner matching system
+- Curated movie recommendations
+- Watchlist management
+- Real-time matching notifications
+
+## Project Roadmap 📈
+
+### Phase 1: Foundation
+
+**Technical Requirements:**
+
+- Next.js 15 with App Router
+- Tailwind CSS for styling
+- TypeScript for type safety
+- Shadcn/ui for component library
+- Git for version control
+
+**Tasks:**
+
+- [ ] Project Setup
+
+  - [x] Initialize Next.js project with TypeScript
+  - [x] Install and configure Tailwind CSS
+  - [x] Set up ESLint and Prettier
+  - [ ] Configure shadcn/ui
+  - [x] Create basic folder structure
+    - `/app` for routes
+    - `/components` for UI components
+    - `/lib` for utilities
+    - `/types` for TypeScript definitions
+
+- [ ] Basic UI Components
+
+  - [ ] Set up layout.tsx with metadata
+  - [ ] Create reusable Card component using shadcn/ui
+  - [ ] Implement basic button components
+  - [ ] Add theme configuration with next-themes
+  - [ ] Create loading and error states using Suspense
+
+- [ ] Mock Data Integration
+  - [ ] Create movie type definitions
+  - [ ] Set up mock data service
+  - [ ] Create basic client-side state management with React Context
+
+### Phase 2: Core Features
+
+**Technical Requirements:**
+
+- Framer Motion for animations
+- React Server Components where applicable
+- Local Storage for client-side persistence
+
+**Tasks:**
+
+- [ ] Swipeable Interface
+  - [ ] Create client-side swipe component
+  - [ ] Implement Framer Motion animations
+  - [ ] Add touch and mouse gesture controls
+  - [ ] Implement keyboard navigation
+  - [ ] Add haptic feedback for mobile
+
+### Phase 3: Data Integration
+
+**Technical Requirements:**
+
+- Next.js API routes for backend logic
+- TMDB API integration
+- React Query/TanStack Query for data fetching
+- Zod for runtime type validation
+
+**Tasks:**
+
+#### API Integration
+
+- [ ] Set up environment variables
+
+  - [ ] Create `.env.example` and `.env.local`
+  - [ ] Add TMDB API keys and configurations
+  - [ ] Document all required environment variables
+
+- [ ] Create API route handlers
+
+  - [ ] Set up base API configuration
+  - [ ] Create movie search endpoints
+  - [ ] Implement movie details endpoint
+  - [ ] Add recommendations endpoint
+  - [ ] Create genre list endpoint
+
+- [ ] Implement error handling middleware
+
+  - [ ] Create custom error classes
+  - [ ] Set up global error handler
+  - [ ] Add error logging system
+  - [ ] Implement retry logic for failed requests
+
+- [ ] Add request caching with Next.js Cache
+
+  - [ ] Configure cache strategies
+  - [ ] Implement cache invalidation
+  - [ ] Set up revalidation endpoints
+  - [ ] Add cache headers
+
+- [ ] Create type-safe API client
+  - [ ] Define API response types
+  - [ ] Create API utility functions
+  - [ ] Add request interceptors
+  - [ ] Implement response transformers
+
+#### Data Management
+
+- [ ] Define Zod schemas for data validation
+
+  - [ ] Create movie schema
+  - [ ] Define user preferences schema
+  - [ ] Set up validation middleware
+  - [ ] Add custom validation rules
+
+- [ ] Implement data transformation utilities
+
+  - [ ] Create movie data normalizer
+  - [ ] Add date formatting utilities
+  - [ ] Implement rating conversion
+  - [ ] Create image URL formatters
+
+- [ ] Set up localStorage sync
+
+  - [ ] Create storage service
+  - [ ] Implement sync logic
+  - [ ] Add version control for stored data
+  - [ ] Handle storage limits
+
+- [ ] Create offline fallback
+  - [ ] Implement service worker
+  - [ ] Add offline data storage
+  - [ ] Create sync queue for pending actions
+  - [ ] Handle conflict resolution
+
+#### Search & Filters
+
+- [ ] Implement server-side search
+
+  - [ ] Create search API endpoint
+  - [ ] Add search result caching
+  - [ ] Implement pagination
+  - [ ] Add search suggestions
+
+- [ ] Create genre filter components
+
+  - [ ] Build genre selector UI
+  - [ ] Add multi-select functionality
+  - [ ] Implement filter logic
+  - [ ] Add filter persistence
+
+- [ ] Add year/rating filter logic
+
+  - [ ] Create range selector component
+  - [ ] Implement filter combinations
+  - [ ] Add filter reset functionality
+  - [ ] Create filter presets
+
+- [ ] Implement sort functionality
+
+  - [ ] Add sort parameters to API
+  - [ ] Create sort UI components
+  - [ ] Implement client-side sorting
+  - [ ] Add sort persistence
+
+- [ ] Add URL-based filtering
+  - [ ] Implement query parameter handling
+  - [ ] Create sharable filter URLs
+  - [ ] Add filter state management
+  - [ ] Handle filter validation
+
+## Getting Started 🚀
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+- Git
+
+### Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/cinemate.git
+```
+
+2. Install dependencies
+
+```bash
+cd cinemate
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Set up environment variables
+
+```bash
+cp .env.example .env.local
+```
+
+4. Run the development server
 
 ```bash
 npm run dev
 # or
 yarn dev
 # or
-pnpm dev
-# or
-bun dev
+pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack 🛠️
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js 15**
+- **TypeScript**
+- **Tailwind CSS**
+- **Shadcn/ui**
+- **Framer Motion**
+- **ESLint**
+- **Prettier**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Development Journal 📝
 
-## Learn More
+### Week 1 (January 30 - February 5, 2025)
 
-To learn more about Next.js, take a look at the following resources:
+#### January 30, 2025 - Project Initialization 🎬
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Today\'s Focus:** Project Setup and Planning
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Achievements:**
 
-## Deploy on Vercel
+- Created project concept and scope
+- Set up initial project documentation
+- Decided on technology stack
+- Created comprehensive README.md
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Technical Decisions:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Selected Next.js App Router for modern rendering patterns and improved performance
+- Chose shadcn/ui for accessible, customizable components
+- Decided on TypeScript for better type safety and developer experience
+
+**Challenges:**
+
+**Solutions:**
+
+- Created detailed project phases to manage scope
+
+**Learnings:**
+
+- Benefits of breaking down features into manageable tasks
+
+**Next Steps:**
+
+- Begin basic component implementation
