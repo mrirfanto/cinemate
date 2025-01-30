@@ -28,12 +28,12 @@ CineMate helps couples find their perfect movie match. Swipe through movies toge
 
 **Tasks:**
 
-- [ ] Project Setup
+- [x] Project Setup
 
   - [x] Initialize Next.js project with TypeScript
   - [x] Install and configure Tailwind CSS
   - [x] Set up ESLint and Prettier
-  - [ ] Configure shadcn/ui
+  - [x] Configure shadcn/ui
   - [x] Create basic folder structure
     - `/app` for routes
     - `/components` for UI components
