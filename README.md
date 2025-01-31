@@ -42,10 +42,9 @@ CineMate helps couples find their perfect movie match. Swipe through movies toge
 
 - [ ] Basic UI Components
 
-  - [ ] Set up layout.tsx with metadata
-  - [ ] Create reusable Card component using shadcn/ui
+  - [x] Set up layout.tsx with metadata
+  - [x] Create reusable Card component using shadcn/ui
   - [ ] Implement basic button components
-  - [ ] Add theme configuration with next-themes
   - [ ] Create loading and error states using Suspense
 
 - [ ] Mock Data Integration
@@ -269,3 +268,32 @@ pnpm run dev
 **Next Steps:**
 
 - Begin basic component implementation
+
+#### January 31, 2025 - Implement UI Components 🎬
+
+**Today\'s Focus:** Implement UI Components for Interactions
+
+**Achievements:**
+
+- Created **movie-card** component
+-
+
+**Technical Decisions:**
+
+- Using Card component from shadcn/ui
+
+**Challenges:**
+
+- Having difficulties to look for the right design from figma
+
+**Solutions:**
+
+- Use basic layout, displaying core information about the movie
+
+**Learnings:**
+
+-
+
+**Next Steps:**
+
+- Complete the UI Component
