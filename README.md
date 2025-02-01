@@ -277,7 +277,8 @@ pnpm run dev
 **Achievements:**
 
 - Created **movie-card** component
-- **Technical Decisions:**
+
+**Technical Decisions:**
 
 - Using Card component from shadcn/ui
 
@@ -294,3 +295,29 @@ pnpm run dev
 - **Next Steps:**
 
 - Complete the UI Component
+
+#### February 1, 2025 - Implement UI Components 🎬
+
+**Today\'s Focus:** Implement Card Stack layout and Action Buttons
+
+**Achievements:**
+
+- Create stack card layout
+- Create action buttons component
+
+**Technical Decisions:**
+
+- Using Button component from shadcn/ui
+- Using icons from lucide/react
+
+**Challenges:**
+
+- **Solutions:**
+
+- Use tailwind CSS to position second until last cards
+
+**Learnings:**
+
+- **Next Steps:**
+
+- Implement skeleton UI when load data
