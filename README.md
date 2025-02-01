@@ -44,7 +44,8 @@ CineMate helps couples find their perfect movie match. Swipe through movies toge
 
   - [x] Set up layout.tsx with metadata
   - [x] Create reusable Card component using shadcn/ui
-  - [ ] Implement basic button components
+  - [x] Implement basic button components
+  - [ ] Implement stack looking Card
   - [ ] Create loading and error states using Suspense
 
 - [ ] Mock Data Integration
@@ -276,9 +277,7 @@ pnpm run dev
 **Achievements:**
 
 - Created **movie-card** component
--
-
-**Technical Decisions:**
+- **Technical Decisions:**
 
 - Using Card component from shadcn/ui
 
@@ -292,8 +291,6 @@ pnpm run dev
 
 **Learnings:**
 
--
-
-**Next Steps:**
+- **Next Steps:**
 
 - Complete the UI Component
