@@ -40,18 +40,17 @@ CineMate helps couples find their perfect movie match. Swipe through movies toge
     - `/lib` for utilities
     - `/types` for TypeScript definitions
 
-- [ ] Basic UI Components
+- [x] Basic UI Components
 
   - [x] Set up layout.tsx with metadata
   - [x] Create reusable Card component using shadcn/ui
   - [x] Implement basic button components
   - [x] Implement stack looking Card
-  - [ ] Create loading and error states using Suspense
+  - [x] Create loading and error states using Suspense
 
-- [ ] Mock Data Integration
-  - [ ] Create movie type definitions
-  - [ ] Set up mock data service
-  - [ ] Create basic client-side state management with React Context
+- [x] Mock Data Integration
+  - [x] Create movie type definitions
+  - [x] Set up mock data service
 
 ### Phase 2: Core Features
 
@@ -321,3 +320,35 @@ pnpm run dev
 - **Next Steps:**
 
 - Implement skeleton UI when load data
+
+#### February 2, 2025 - Implement UI Components 🎬
+
+**Today\'s Focus:** Implement Skeleton and Error fallback
+
+**Achievements:**
+
+- Create skeleton using suspense next.js
+- Create error page using error boundary in next.js
+- Implement new protected route /discover for the main swipe UI
+
+**Technical Decisions:**
+
+- created grouped routes (protected) indicating routes for authenticated users
+- grouped card related components under /components/cards
+- implement MovieStack component as Server Component so we can use Suspense
+
+**Challenges:**
+
+- Making the suspense work accordingly as I was using Client Component at first.
+
+- **Solutions:**
+
+- Set MovieStack as server component and uses Suspense
+
+**Learnings:**
+
+- Be mindful when deciding which component should be server/client component
+
+- **Next Steps:**
+
+- API integration
