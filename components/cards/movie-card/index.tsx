@@ -16,13 +16,13 @@ export default function MovieCard({ movie }: MovieCardProps) {
       <CardContent className="p-0">
         <div className="relative aspect-[2/3] rounded-xl">
           <Image
-            src={movie.posterPath}
+            src={movie.poster_path}
             alt={`${movie.title} poster`}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="rounded-xl object-cover"
           />
-          <div className="absolute bottom-0 flex w-full flex-col gap-3 rounded-bl-xl rounded-br-xl bg-gradient-to-t from-black to-transparent/80 p-3">
+          <div className="absolute bottom-0 flex w-full flex-col gap-3 rounded-bl-xl rounded-br-xl bg-gradient-to-t from-gray-800 to-transparent/40 p-3">
             <div className="flex flex-col gap-1">
               <h3 className="text-2xl font-bold text-white">{movie.title}</h3>
               <div className="flex gap-2">
@@ -38,8 +38,8 @@ export default function MovieCard({ movie }: MovieCardProps) {
               </div>
             </div>
             <div className="text-xs text-white">
-              {new Date(movie.releaseDate).getFullYear()} • ⭐{' '}
-              {movie.voteAverage.toFixed(1)}
+              {new Date(movie.release_date).getFullYear()} • ⭐{' '}
+              {movie.vote_average.toFixed(1)}
             </div>
           </div>
         </div>

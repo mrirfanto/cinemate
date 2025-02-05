@@ -2,8 +2,13 @@ import MovieCardActions from '@/components/cards/movie-card-actions';
 import MovieStack from '@/components/cards/movie-stack';
 import { Suspense } from 'react';
 import DiscoverPageLoading from './loading';
+import { fetchMovieCardData } from '@/repositories/fetchMovies';
 
-export default function DiscoverPage() {
+export default async function DiscoverPage() {
+  const { transformedMovies } = await fetchMovieCardData({
+    movieType: 'popular',
+  });
+
   return (
     <>
       <div className="mb-4 flex w-full flex-col items-center">
@@ -11,7 +16,7 @@ export default function DiscoverPage() {
         <p className="flex-1 text-lg">Romance/Comedy</p>
       </div>
       <Suspense fallback={<DiscoverPageLoading />}>
-        <MovieStack />
+        <MovieStack movies={transformedMovies} />
       </Suspense>
       <MovieCardActions />
     </>

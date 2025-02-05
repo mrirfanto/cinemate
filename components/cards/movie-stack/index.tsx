@@ -1,16 +1,11 @@
 import { clsx } from 'clsx';
 import MovieCard from '@/components/cards/movie-card';
-import { mockMovies, Movie } from '@/types/movie';
+import { Movie } from '@/types/movie';
 
-async function getMovies(): Promise<Movie[]> {
-  await new Promise((resolve) => setTimeout(resolve, 3000)); // Simulated delay
-
-  return mockMovies;
+interface MovieStackProps {
+  movies: Movie[];
 }
-
-export default async function MovieStack() {
-  const movies = await getMovies();
-
+export default function MovieStack({ movies }: MovieStackProps) {
   return (
     <ul className="relative mx-auto my-8 h-full w-[320px]">
       {movies.map((movie, index) => (
@@ -18,7 +13,7 @@ export default async function MovieStack() {
           key={movie.id}
           className={clsx(
             {
-              'absolute -top-4 left-[6%] z-[-1] w-[88%] opacity-50':
+              'absolute -top-4 left-1/2 z-[-1] w-[75%] -translate-x-1/2 transform opacity-50':
                 index !== 0,
             },
             'h-full w-full'
