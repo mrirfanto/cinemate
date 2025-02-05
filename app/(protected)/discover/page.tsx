@@ -12,8 +12,8 @@ export default async function DiscoverPage() {
   return (
     <>
       <div className="mb-4 flex w-full flex-col items-center">
-        <h1 className="flex-1 text-5xl">Discover</h1>
-        <p className="flex-1 text-lg">Romance/Comedy</p>
+        <h1 className="flex-1 text-4xl">Discover</h1>
+        <p className="flex-1 text-xl">Popular</p>
       </div>
       <Suspense fallback={<DiscoverPageLoading />}>
         <MovieStack movies={transformedMovies} />
