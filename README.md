@@ -352,3 +352,33 @@ pnpm run dev
 - **Next Steps:**
 
 - API integration
+
+#### February 13, 2025 - Implement Animation 🎬
+
+**Today\'s Focus:** Implement Swipe Animation
+
+**Achievements:**
+
+- Install framer-motion
+- Implement swipe motion to like/dislike movie
+
+**Technical Decisions:**
+
+- Use framer-motion (now called motion)
+
+**Challenges:**
+
+- Making the swipe motion correct
+- Displaying the second to last movie properly
+
+- **Solutions:**
+
+- Set MovieStack as server component and uses Suspense
+
+**Learnings:**
+
+- Z-index dynamically to create stack properly
+
+- **Next Steps:**
+
+- Store the liked/disliked card
