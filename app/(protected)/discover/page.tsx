@@ -1,8 +1,7 @@
-import MovieCardActions from '@/components/cards/movie-card-actions';
-import MovieStack from '@/components/cards/movie-stack';
 import { Suspense } from 'react';
 import DiscoverPageLoading from './loading';
 import { fetchMovieCardData } from '@/repositories/fetchMovies';
+import MovieStack from '@/components/cards/movie-stack';
 
 export default async function DiscoverPage() {
   const { transformedMovies } = await fetchMovieCardData({
@@ -18,7 +17,6 @@ export default async function DiscoverPage() {
       <Suspense fallback={<DiscoverPageLoading />}>
         <MovieStack movies={transformedMovies} />
       </Suspense>
-      <MovieCardActions />
     </>
   );
 }
