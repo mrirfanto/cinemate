@@ -214,9 +214,12 @@ pnpm run dev
 
 - Store the liked/disliked card
 
-#### February 14, 2025 - Store liked/disliked movies 🎬
+#### February 14, 2025 - Implement Core Functionality 🎬
 
-**Today\'s Focus:** Implement Swipe Animation
+**Today\'s Focus:**
+
+- Implement swiped movies tracker
+- Implement room for multiplayer interactions
 
 **Achievements:**
 
@@ -224,7 +227,8 @@ pnpm run dev
 - Create new dynamic page route for dynamic movie types
 - Integrate tracking liked/disliked movies on client side and storing it to cookies
 - Filter out the liked/disliked movies on SSR
+- Implement room for multiplayer to start swiping together
 
 - **Next Steps:**
 
-- Implement room/session to do matching with multiple users
+- Track swiped movies for each user in a room
