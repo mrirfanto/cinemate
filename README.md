@@ -14,173 +14,6 @@ CineMate helps couples find their perfect movie match. Swipe through movies toge
 - Watchlist management
 - Real-time matching notifications
 
-## Project Roadmap 📈
-
-### Phase 1: Foundation
-
-**Technical Requirements:**
-
-- Next.js 15 with App Router
-- Tailwind CSS for styling
-- TypeScript for type safety
-- Shadcn/ui for component library
-- Git for version control
-
-**Tasks:**
-
-- [x] Project Setup
-
-  - [x] Initialize Next.js project with TypeScript
-  - [x] Install and configure Tailwind CSS
-  - [x] Set up ESLint and Prettier
-  - [x] Configure shadcn/ui
-  - [x] Create basic folder structure
-    - `/app` for routes
-    - `/components` for UI components
-    - `/lib` for utilities
-    - `/types` for TypeScript definitions
-
-- [x] Basic UI Components
-
-  - [x] Set up layout.tsx with metadata
-  - [x] Create reusable Card component using shadcn/ui
-  - [x] Implement basic button components
-  - [x] Implement stack looking Card
-  - [x] Create loading and error states using Suspense
-
-- [x] Mock Data Integration
-  - [x] Create movie type definitions
-  - [x] Set up mock data service
-
-### Phase 2: Core Features
-
-**Technical Requirements:**
-
-- Framer Motion for animations
-- React Server Components where applicable
-- Local Storage for client-side persistence
-
-**Tasks:**
-
-- [ ] Swipeable Interface
-  - [ ] Create client-side swipe component
-  - [ ] Implement Framer Motion animations
-  - [ ] Add touch and mouse gesture controls
-  - [ ] Implement keyboard navigation
-  - [ ] Add haptic feedback for mobile
-
-### Phase 3: Data Integration
-
-**Technical Requirements:**
-
-- Next.js API routes for backend logic
-- TMDB API integration
-- React Query/TanStack Query for data fetching
-- Zod for runtime type validation
-
-**Tasks:**
-
-#### API Integration
-
-- [ ] Set up environment variables
-
-  - [ ] Create `.env.example` and `.env.local`
-  - [ ] Add TMDB API keys and configurations
-  - [ ] Document all required environment variables
-
-- [ ] Create API route handlers
-
-  - [ ] Set up base API configuration
-  - [ ] Create movie search endpoints
-  - [ ] Implement movie details endpoint
-  - [ ] Add recommendations endpoint
-  - [ ] Create genre list endpoint
-
-- [ ] Implement error handling middleware
-
-  - [ ] Create custom error classes
-  - [ ] Set up global error handler
-  - [ ] Add error logging system
-  - [ ] Implement retry logic for failed requests
-
-- [ ] Add request caching with Next.js Cache
-
-  - [ ] Configure cache strategies
-  - [ ] Implement cache invalidation
-  - [ ] Set up revalidation endpoints
-  - [ ] Add cache headers
-
-- [ ] Create type-safe API client
-  - [ ] Define API response types
-  - [ ] Create API utility functions
-  - [ ] Add request interceptors
-  - [ ] Implement response transformers
-
-#### Data Management
-
-- [ ] Define Zod schemas for data validation
-
-  - [ ] Create movie schema
-  - [ ] Define user preferences schema
-  - [ ] Set up validation middleware
-  - [ ] Add custom validation rules
-
-- [ ] Implement data transformation utilities
-
-  - [ ] Create movie data normalizer
-  - [ ] Add date formatting utilities
-  - [ ] Implement rating conversion
-  - [ ] Create image URL formatters
-
-- [ ] Set up localStorage sync
-
-  - [ ] Create storage service
-  - [ ] Implement sync logic
-  - [ ] Add version control for stored data
-  - [ ] Handle storage limits
-
-- [ ] Create offline fallback
-  - [ ] Implement service worker
-  - [ ] Add offline data storage
-  - [ ] Create sync queue for pending actions
-  - [ ] Handle conflict resolution
-
-#### Search & Filters
-
-- [ ] Implement server-side search
-
-  - [ ] Create search API endpoint
-  - [ ] Add search result caching
-  - [ ] Implement pagination
-  - [ ] Add search suggestions
-
-- [ ] Create genre filter components
-
-  - [ ] Build genre selector UI
-  - [ ] Add multi-select functionality
-  - [ ] Implement filter logic
-  - [ ] Add filter persistence
-
-- [ ] Add year/rating filter logic
-
-  - [ ] Create range selector component
-  - [ ] Implement filter combinations
-  - [ ] Add filter reset functionality
-  - [ ] Create filter presets
-
-- [ ] Implement sort functionality
-
-  - [ ] Add sort parameters to API
-  - [ ] Create sort UI components
-  - [ ] Implement client-side sorting
-  - [ ] Add sort persistence
-
-- [ ] Add URL-based filtering
-  - [ ] Implement query parameter handling
-  - [ ] Create sharable filter URLs
-  - [ ] Add filter state management
-  - [ ] Handle filter validation
-
 ## Getting Started 🚀
 
 ### Prerequisites
@@ -235,8 +68,6 @@ pnpm run dev
 - **Prettier**
 
 ## Development Journal 📝
-
-### Week 1 (January 30 - February 5, 2025)
 
 #### January 30, 2025 - Project Initialization 🎬
 
@@ -382,3 +213,18 @@ pnpm run dev
 - **Next Steps:**
 
 - Store the liked/disliked card
+
+#### February 14, 2025 - Store liked/disliked movies 🎬
+
+**Today\'s Focus:** Implement Swipe Animation
+
+**Achievements:**
+
+- Create SwipeTracker class
+- Create new dynamic page route for dynamic movie types
+- Integrate tracking liked/disliked movies on client side and storing it to cookies
+- Filter out the liked/disliked movies on SSR
+
+- **Next Steps:**
+
+- Implement room/session to do matching with multiple users

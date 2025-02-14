@@ -6,7 +6,8 @@ import { Movie } from '@/types/movie';
 import { Button } from '@/components/ui/button';
 import { XIcon, HeartIcon } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
-import { useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
+import { initializeStorage } from '@/lib/swipe-tracker';
 
 interface MovieStackProps {
   movies: Movie[];
@@ -19,8 +20,26 @@ export default function MovieStack({ movies }: MovieStackProps) {
   const [exitDirection, setExitDirection] = useState<SwipeDirection | null>(
     null
   );
+  const swipeTracker = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      return initializeStorage();
+    }
+    return null;
+  }, []);
+
+  useEffect(() => {
+    const filteredMovies = movies.filter(
+      (movie) => !swipeTracker?.hasBeenSwiped(movie.id)
+    );
+    setCards(filteredMovies);
+  }, [movies, swipeTracker]);
 
   const handleSwipe = (direction: SwipeDirection) => {
+    if (!swipeTracker) return;
+    if (cards.length === 0) return;
+
+    const currentMovie = cards[0];
+    swipeTracker.trackSwipe(currentMovie.id, direction === 'right');
     setExitDirection(direction);
 
     setTimeout(() => {
@@ -30,12 +49,10 @@ export default function MovieStack({ movies }: MovieStackProps) {
   };
 
   const triggerSwipe = (direction: SwipeDirection) => {
+    if (!swipeTracker) return;
     if (cards.length === 0) return;
     handleSwipe(direction);
   };
-
-  console.log(cards[0]);
-  console.log(cards[cards.length - 1]);
 
   return (
     <div>

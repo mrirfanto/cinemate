@@ -58,12 +58,26 @@ export async function fetchGenres(): Promise<Genre[]> {
   return genresData.genres;
 }
 
-export async function fetchMovieCardData({ movieType }: { movieType: string }) {
+export async function fetchMovieCardData({
+  movieType,
+  swipedMovieIds = [],
+}: {
+  movieType: string;
+  swipedMovieIds?: number[];
+}) {
   const configuration = await fetchConfiguration();
   const genres = await fetchGenres();
   const movies = await fetchMovies(movieType);
 
-  const transformedMovies = transformMovies({ configuration, genres, movies });
+  const unswipedMovies = movies.filter(
+    (movie) => !swipedMovieIds.includes(movie.id)
+  );
+
+  const transformedMovies = transformMovies({
+    configuration,
+    genres,
+    movies: unswipedMovies,
+  });
 
   return { transformedMovies };
 }
