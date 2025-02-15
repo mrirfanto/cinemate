@@ -231,4 +231,22 @@ pnpm run dev
 
 - **Next Steps:**
 
+- Allow user to create user name and track user in localStorage
 - Track swiped movies for each user in a room
+
+#### February 14, 2025 - Implement Core Functionality 🎬
+
+**Today\'s Focus:**
+
+- Allow user to create user name and track user in localStorage
+- Track swiped movies for each user in a room
+
+**Achievements:**
+
+- Create RoomSwipeTracker class
+- Create RoomPresenceProvider to track active users in a room
+- Display information about active users in a room
+- Display toast for liked movies and when a match is found in a room
+
+- **Next Steps:**
+- Design how we can allow multiplayer using the same room

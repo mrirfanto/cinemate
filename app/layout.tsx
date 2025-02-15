@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
+import { Toaster } from 'react-hot-toast';
 
 // Font setup - Using Outfit as primary and Inter as secondary font
 const outfit = Outfit({
@@ -36,12 +37,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${outfit.variable} ${inter.variable} font-sans`}
+    >
       <body className="font-outfit min-h-screen bg-background">
         {/* Theme provider can be added here later */}
         <main className="relative flex min-h-screen flex-col justify-center">
           {children}
         </main>
+        <Toaster position="bottom-right" />
       </body>
     </html>
   );

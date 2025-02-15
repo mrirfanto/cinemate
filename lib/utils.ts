@@ -18,3 +18,7 @@ export function isValidRoomId(roomId: string): boolean {
   // Check if room ID is 6 characters and only contains alphanumeric characters
   return /^[A-Z0-9]{6}$/.test(roomId);
 }
+
+export function generateUserId(): string {
+  return Math.random().toString(36).substring(2, 15);
+}

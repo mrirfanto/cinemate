@@ -1,20 +1,39 @@
 import { cookies } from 'next/headers';
 import { fetchMovieCardData } from '@/repositories/fetchMovies';
 import MovieStack from '@/components/cards/movie-stack';
+import { RoomPresenceProvider } from '@/components/room-presence-provider';
+import { redirect } from 'next/navigation';
 
-export default async function MovieContent() {
+interface MovieContentProps {
+  params: {
+    roomId: string;
+  };
+}
+
+export default async function MovieContent({ params }: MovieContentProps) {
+  const { roomId } = await params;
   const cookieStore = await cookies();
-  const swipedMoviesCookie = cookieStore.get('movieSwipes');
-  const swipedMovies = swipedMoviesCookie
-    ? JSON.parse(swipedMoviesCookie.value)
-    : { liked: [], disliked: [] };
+  const userNameCookie = cookieStore.get('userName');
 
-  const allSwipedMovieIds = [...swipedMovies.liked, ...swipedMovies.disliked];
+  if (!userNameCookie?.value) {
+    // Redirect to landing page if no username
+    redirect('/');
+  }
 
   const { transformedMovies } = await fetchMovieCardData({
     movieType: 'popular',
-    swipedMovieIds: allSwipedMovieIds,
+    swipedMovieIds: [], // We'll handle this client-side now
   });
 
-  return <MovieStack movies={transformedMovies} />;
+  return (
+    <div className="container mx-auto px-4">
+      <RoomPresenceProvider roomId={roomId} userName={userNameCookie.value}>
+        <MovieStack
+          movies={transformedMovies}
+          roomId={roomId}
+          userName={userNameCookie.value}
+        />
+      </RoomPresenceProvider>
+    </div>
+  );
 }

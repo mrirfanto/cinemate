@@ -11,7 +11,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <div className="container mx-auto px-4">
       <h1 className="my-4 text-center text-2xl font-bold">Room: {roomId}</h1>
-      <MovieContent />
+      <MovieContent params={params} />
     </div>
   );
 }
