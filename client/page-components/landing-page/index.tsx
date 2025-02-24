@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { generateRoomId, isValidRoomId } from '@/lib/utils';
+import { connectToSocketServer } from '@/lib/socket';
 
 type FlowStep = 'room' | 'name';
 
@@ -91,6 +92,7 @@ export default function LandingPage() {
     // If we're creating a room, use the generated roomId
     // Otherwise, use the entered roomId
     const targetRoomId = isCreatingRoom ? roomId : roomId.toUpperCase();
+    connectToSocketServer(targetRoomId, userName);
     router.push(`/room/${targetRoomId}`);
   };
 

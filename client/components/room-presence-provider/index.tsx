@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
+import { getSocket } from '@/lib/socket';
 
 interface RoomPresenceContext {
   totalUsers: number;
@@ -25,42 +26,24 @@ export function RoomPresenceProvider({
   const [activeUsers, setActiveUsers] = useState<string[]>([userName]);
 
   useEffect(() => {
-    const trackUserPresence = () => {
-      const now = Date.now();
-      const presence = JSON.parse(
-        localStorage.getItem(`room_${roomId}_presence`) || '{}'
-      );
+    const socket = getSocket();
 
-      // Update presence using userName
-      presence[userName] = now;
+    if (socket) {
+      // Emit an event to join the room
+      socket.emit('joinRoom', roomId, userName);
 
-      const userTimestamps = new Map<string, number>();
-
-      Object.entries(presence).forEach(([name, timestamp]) => {
-        const ts = Number(timestamp);
-        if (now - ts < 60000) {
-          if (!userTimestamps.has(name) || ts > userTimestamps.get(name)!) {
-            userTimestamps.set(name, ts);
-          }
-        }
+      // Listen for updates on active users
+      socket.on('updateActiveUsers', (users: string[]) => {
+        setTotalUsers(users.length);
+        setActiveUsers(users);
       });
 
-      const updatedPresence = Object.fromEntries(userTimestamps.entries());
-
-      localStorage.setItem(
-        `room_${roomId}_presence`,
-        JSON.stringify(updatedPresence)
-      );
-
-      const currentActiveUsers = Array.from(userTimestamps.keys());
-      setTotalUsers(currentActiveUsers.length);
-      setActiveUsers(currentActiveUsers);
-    };
-
-    const interval = setInterval(trackUserPresence, 5000);
-    trackUserPresence();
-
-    return () => clearInterval(interval);
+      // Clean up on unmount
+      return () => {
+        socket.emit('leaveRoom', roomId, userName);
+        socket.off('updateActiveUsers');
+      };
+    }
   }, [roomId, userName]);
 
   return (
