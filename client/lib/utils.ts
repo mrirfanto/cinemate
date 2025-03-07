@@ -1,24 +1,41 @@
-import { clsx, type ClassValue } from 'clsx';
+import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function generateRoomId(): string {
-  // Generate a 6-character alphanumeric room ID
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  return Array.from(
-    { length: 6 },
-    () => chars[Math.floor(Math.random() * chars.length)]
-  ).join('');
-}
+// Local storage functions for movie preferences
+export const saveMoviePreference = (movieId: number, liked: boolean) => {
+  try {
+    const preferences = getMoviePreferences();
+    preferences[movieId.toString()] = liked;
+    localStorage.setItem('moviePreferences', JSON.stringify(preferences));
+  } catch (error) {
+    console.error('Error saving movie preference:', error);
+  }
+};
 
-export function isValidRoomId(roomId: string): boolean {
-  // Check if room ID is 6 characters and only contains alphanumeric characters
-  return /^[A-Z0-9]{6}$/.test(roomId);
-}
+export const getMoviePreferences = (): Record<string, boolean> => {
+  try {
+    const preferences = localStorage.getItem('moviePreferences');
+    return preferences ? JSON.parse(preferences) : {};
+  } catch (error) {
+    console.error('Error getting movie preferences:', error);
+    return {};
+  }
+};
 
-export function generateUserId(): string {
-  return Math.random().toString(36).substring(2, 15);
-}
+export const getLikedMovies = (): string[] => {
+  const preferences = getMoviePreferences();
+  return Object.entries(preferences)
+    .filter(([, liked]) => liked)
+    .map(([id]) => id);
+};
+
+export const getDislikedMovies = (): string[] => {
+  const preferences = getMoviePreferences();
+  return Object.entries(preferences)
+    .filter(([, liked]) => !liked)
+    .map(([id]) => id);
+};

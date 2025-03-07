@@ -2,7 +2,6 @@ export interface Movie {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
-  genres: string[];
   id: number;
   original_language: string;
   original_title: string;
@@ -15,6 +14,8 @@ export interface Movie {
   vote_average: number;
   vote_count: number;
 }
+
+export type MoviePreference = Record<string, boolean>;
 
 export interface Genre {
   id: number;

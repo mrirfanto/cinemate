@@ -2,13 +2,16 @@ import { Configuration } from '@/types/configuration';
 import { Genre, Movie } from '@/types/movie';
 import { transformMovies } from './utils';
 
-export async function fetchConfiguration(): Promise<Configuration> {
+const TMDB_API_URL = process.env.NEXT_PUBLIC_TMDB_API_URL;
+const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+
+async function fetchConfiguration(): Promise<Configuration> {
   const configRes = await fetch(
-    `${process.env.TMDB_API_URL}/configuration?language=en-US`,
+    `${TMDB_API_URL}/configuration?language=en-US`,
     {
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+        Authorization: `Bearer ${TMDB_API_KEY}`,
       },
     }
   );
@@ -23,13 +26,13 @@ export async function fetchConfiguration(): Promise<Configuration> {
   return await configRes.json();
 }
 
-export async function fetchMovies(movieType: string): Promise<Movie[]> {
+async function fetchMovies(movieType: string): Promise<Movie[]> {
   const moviesRes = await fetch(
-    `${process.env.TMDB_API_URL}/movie/${movieType}?language=en-US&page=1`,
+    `${TMDB_API_URL}/movie/${movieType}?language=en-US&page=1`,
     {
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+        Authorization: `Bearer ${TMDB_API_KEY}`,
       },
     }
   );
@@ -42,13 +45,13 @@ export async function fetchMovies(movieType: string): Promise<Movie[]> {
   return moviesData.results;
 }
 
-export async function fetchGenres(): Promise<Genre[]> {
+async function fetchGenres(): Promise<Genre[]> {
   const genresRes = await fetch(
-    `${process.env.TMDB_API_URL}/genre/movie/list?language=en`,
+    `${TMDB_API_URL}/genre/movie/list?language=en`,
     {
       headers: {
         accept: 'application/json',
-        Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+        Authorization: `Bearer ${TMDB_API_KEY}`,
       },
     }
   );
