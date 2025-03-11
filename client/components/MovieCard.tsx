@@ -6,7 +6,7 @@ import { X, Heart } from 'lucide-react';
 import { Movie } from '@/types/movie';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { useMoviePreferences } from '@/hooks/useMovies';
+import { useRoom } from '@/contexts/RoomContext';
 
 interface MovieCardProps {
   movie: Movie;
@@ -14,7 +14,7 @@ interface MovieCardProps {
 }
 
 export function MovieCard({ movie, onSwipe }: MovieCardProps) {
-  const { handleLikeMovie, handleDislikeMovie } = useMoviePreferences();
+  const { sendMovieLike } = useRoom();
   const [exitX, setExitX] = useState<number | null>(null);
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-20, 20]);
@@ -26,11 +26,10 @@ export function MovieCard({ movie, onSwipe }: MovieCardProps) {
   ) => {
     if (info.offset.x > 100) {
       setExitX(200);
-      handleLikeMovie(movie);
+      sendMovieLike(movie.id);
       onSwipe('right');
     } else if (info.offset.x < -100) {
       setExitX(-200);
-      handleDislikeMovie(movie);
       onSwipe('left');
     }
   };
@@ -38,7 +37,7 @@ export function MovieCard({ movie, onSwipe }: MovieCardProps) {
   const handleLike = () => {
     setExitX(200);
     setTimeout(() => {
-      handleLikeMovie(movie);
+      sendMovieLike(movie.id);
       onSwipe('right');
     }, 200);
   };
@@ -46,7 +45,6 @@ export function MovieCard({ movie, onSwipe }: MovieCardProps) {
   const handleDislike = () => {
     setExitX(-200);
     setTimeout(() => {
-      handleDislikeMovie(movie);
       onSwipe('left');
     }, 200);
   };

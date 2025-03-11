@@ -1,34 +1,15 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
-import { Inter, Outfit } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
-import { Toaster } from 'react-hot-toast';
+import { RoomProvider } from '@/contexts/RoomContext';
 
-// Font setup - Using Outfit as primary and Inter as secondary font
-const outfit = Outfit({
-  subsets: ['latin'],
-  variable: '--font-outfit',
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'CineMate - Movie Matching for Couples',
-  description: 'Find movies you both want to watch',
-  // Basic SEO
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://cinemate.app',
-    title: 'CineMate - Movie Matching for Couples',
-    description: 'Find movies you both want to watch',
-    siteName: 'CineMate',
-  },
+  title: 'CineMate - Find Movies Together',
+  description:
+    'Match movies with your partner and find something you both want to watch.',
 };
 
 export default function RootLayout({
@@ -37,16 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${outfit.variable} ${inter.variable} font-sans`}
-    >
-      <body className="font-outfit min-h-screen bg-background">
-        {/* Theme provider can be added here later */}
-        <main className="relative flex min-h-screen flex-col justify-center">
-          {children}
-        </main>
-        <Toaster position="bottom-right" />
+    <html lang="en">
+      <body className={inter.className}>
+        <RoomProvider>{children}</RoomProvider>
       </body>
     </html>
   );
