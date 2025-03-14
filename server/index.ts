@@ -160,8 +160,17 @@ io.on('connection', (socket: Socket) => {
             // Conclude the session
             io.to(room).emit('sessionConclusion', matchedMovies);
 
-            // Reset decisions
-            sessionDecisions[room] = {};
+            // Clean up room data
+            delete movieLikes[room];
+            delete sessionDecisions[room];
+
+            // Make users leave the room
+            roomUsers.forEach((userId) => {
+              const socket = io.sockets.sockets.get(userId);
+              if (socket) {
+                socket.leave(room);
+              }
+            });
           } else {
             // At least one user wants to continue
             io.to(room).emit('sessionContinue');

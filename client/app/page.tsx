@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { MovieStack } from '@/components/MovieStack';
 import { RoomJoinDialog } from '@/components/RoomJoinDialog';
 import { MatchDialog } from '@/components/MatchDialog';
+import { MatchedMoviesDialog } from '@/components/MatchedMoviesDialog';
 import { useMovies } from '@/hooks/useMovies';
 import { useRoom } from '@/contexts/RoomContext';
 
@@ -30,6 +31,7 @@ export default function Home() {
 
       <RoomJoinDialog open={showJoinDialog} onOpenChange={setShowJoinDialog} />
       <MatchDialog />
+      <MatchedMoviesDialog />
     </main>
   );
 }
